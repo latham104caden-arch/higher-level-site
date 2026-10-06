@@ -200,7 +200,7 @@ export type Testimonial = {
 
 export const testimonials: Testimonial[] = [
   {
-    name: 'Sarah',
+    name: 'Logan Layer',
     niche: 'Roofing',
     platform: 'Meta Ads',
     featured: true,
@@ -216,12 +216,19 @@ export const testimonials: Testimonial[] = [
       'Higher Level set up my Meta Ads and I went from 5 calls a week to 20+. They know exactly how to target homeowners in my area. Best marketing decision.',
   },
   {
-    name: 'Lisa Nguyen',
+    name: 'Randle Bros',
+    niche: 'Window Cleaning',
+    featured: true,
+    quote:
+      'I stopped using my other guy to get with higher level and ive been loving it. im at a 4x ROAS i know my money is going to see a return and im able to grow my team.',
+  },
+  {
+    name: 'Son Nguyen',
     niche: 'Landscaping',
     platform: 'Meta Ads',
     featured: true,
     quote:
-      'Higher Level manages my Meta ads for my landscaping company and it’s been a game changer. My cost per lead dropped significantly and my booking rate went way up. Hunter understood our seasonal fluctuations and built campaigns around spring and fall peaks. Couldn’t ask for better service at this price point.',
+      'Higher Level manages my Meta ads for my landscaping company and it’s been a game changer. My cost per lead dropped significantly and my booking rate went way up. im able to stay out of things a lot more not and free up time to actually grow.',
   },
   {
     name: 'Griffin Berry',
@@ -232,19 +239,18 @@ export const testimonials: Testimonial[] = [
       'Higher Level handles my Google Ads for holiday lighting and the seasonal campaigns are perfectly timed. It’s challenging to market Christmas light installation year-round but they’ve figured out how to run campaigns during off-season that actually generate leads for next year’s bookings. Getting jobs booked months in advance now.',
   },
   {
-    name: 'Tom Redding',
-    niche: 'Roofing',
-    featured: true,
-    quote:
-      'I’ve been with too many marketers to count and they all sucked until one of my buddies mentioned working with the guys over at higher level and its been up hill since. ive had jobs bookout for months and never was mad about ad spend.',
-  },
-  {
     name: 'Larry Conant',
     niche: 'Landscaping',
     platform: 'Meta Ads',
     featured: true,
     quote:
       'I’ve been with Higher Level for 6 months. Their Meta ads keep my landscaping schedule full year-round. Great guys they understand the market and really care about what goes into it. Worth every penny.',
+  },
+  {
+    name: 'Tom Redding',
+    niche: 'Roofing',
+    quote:
+      'I’ve been with too many marketers to count and they all sucked until one of my buddies mentioned working with the guys over at higher level and its been up hill since. ive had jobs booked out for months and never was mad about ad spend.',
   },
   {
     name: 'Robert Patterson',
@@ -265,7 +271,6 @@ export const testimonials: Testimonial[] = [
     platform: 'Meta Ads',
     quote: 'Started with Higher Level’s Meta ads. Consistent bookings. Quality leads. Affordable.',
   },
-  { name: 'Jose', niche: 'Window Cleaning', platform: 'Google Ads', quote: 'Google Ads work.' },
+  { name: 'Jose', niche: 'Window Cleaning', platform: 'Google Ads', quote: 'Google Ad are great with the team here!' },
   { name: 'James Henderson', niche: 'Pressure Washing', platform: 'Meta Ads', quote: 'Real shit. Meta Ads through Higher Level.' },
-  { name: 'Randle Bros', niche: 'Window Cleaning', quote: 'Higher Level.' },
 ]
