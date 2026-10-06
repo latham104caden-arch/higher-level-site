@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { site } from '@/content/site'
 import { MetaPixel } from '@/components/MetaPixel'
 import './globals.css'
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {children}
         <MetaPixel />
+        <SpeedInsights />
       </body>
     </html>
   )
