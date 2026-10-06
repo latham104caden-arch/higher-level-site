@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { parseLead, normalizeUrl, businessTypes, type Lead } from '@/lib/lead'
+import { parseLead, normalizeUrl, businessTypes, packageLabel, type Lead } from '@/lib/lead'
 
 const esc = (s: string) =>
   s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!)
@@ -7,6 +7,7 @@ const esc = (s: string) =>
 function emailHtml(lead: Lead) {
   const type = businessTypes.find((t) => t.value === lead.type)?.label ?? lead.type
   const rows: [string, string][] = [
+    ['Package', packageLabel(lead.package, lead.creative) || 'Not picked (audit only)'],
     ['Name', lead.name],
     ['Business', lead.business],
     ['Website', lead.website],
@@ -56,7 +57,7 @@ export async function POST(req: Request) {
       from: process.env.LEAD_FROM || 'Higher Level <onboarding@higherleveladz.com>',
       to: to.split(',').map((s) => s.trim()),
       reply_to: lead.email,
-      subject: `Free audit request: ${lead.business}`,
+      subject: `${lead.package ? 'Package request' : 'Free audit request'}: ${lead.business}`,
       html: emailHtml(lead),
     }),
   })

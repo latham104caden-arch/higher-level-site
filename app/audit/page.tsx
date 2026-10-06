@@ -1,21 +1,24 @@
 import type { Metadata } from 'next'
 import { Header, Footer } from '@/components/Chrome'
 import { AuditForm } from '@/components/AuditForm'
-import { auditChecks } from '@/content/site'
+import { auditChecks, packages, creativeOptions } from '@/content/site'
+import { packageLabel } from '@/lib/lead'
 
 export const metadata: Metadata = {
-  title: 'Free Ads Audit',
+  title: 'Free Audit',
   description:
-    'Get a free audit of your tracking, landing page, local trust signals, and current ads. Built for local service businesses.',
+    'Claim your package and get a free audit of your tracking, landing page, local trust signals, and current ads.',
 }
 
 export default async function AuditPage({
   searchParams,
 }: {
-  searchParams: Promise<{ type?: string }>
+  searchParams: Promise<{ package?: string; creative?: string }>
 }) {
-  const { type } = await searchParams
-  const ecommerce = type === 'ecommerce'
+  const sp = await searchParams
+  const pkg = packages.some((p) => p.id === sp.package) ? sp.package! : ''
+  const creative = creativeOptions.some((c) => c.id === sp.creative) ? sp.creative! : ''
+  const label = packageLabel(pkg, creative)
 
   return (
     <>
@@ -23,24 +26,29 @@ export default async function AuditPage({
       <main className="audit-page">
         <div className="wrap audit-layout">
           <div>
-            <div className="eyebrow">Free audit</div>
-            <h1>Find out where your leads are leaking.</h1>
+            <div className="kicker kicker-brand">{label ? 'Claim your package' : 'Free audit'}</div>
+            <h1 className="display">{label ? 'Let’s build it.' : 'Find your leaks.'}</h1>
             <p className="lede">
-              Tell us about your business. We’ll review your site and ads, then set up a quick demo call to
-              walk you through what we found and what we’d do about it.
+              Tell us about your business. We’ll audit your site and ads for free, then set up a quick demo call
+              to walk you through it{label ? ' and get your package live' : ''}.
             </p>
-            <ul className="check-list">
+            {label && (
+              <div className="build-chip">
+                <span>Your build</span>
+                <strong>{label}</strong>
+              </div>
+            )}
+            <ul className="audit-checks" style={{ marginTop: 28 }}>
               {auditChecks.map((c) => (
                 <li key={c.title}>
-                  <span>
-                    <strong>{c.title}.</strong> {c.body}
-                  </span>
+                  <strong>{c.title}</strong>
+                  <span>{c.body}</span>
                 </li>
               ))}
             </ul>
           </div>
           <div className="form-card">
-            <AuditForm defaultType={ecommerce ? 'ecommerce' : ''} />
+            <AuditForm pkg={pkg} creative={creative} />
           </div>
         </div>
       </main>

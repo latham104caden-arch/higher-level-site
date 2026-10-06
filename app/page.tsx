@@ -1,132 +1,207 @@
 import Link from 'next/link'
-import { Header, Footer } from '@/components/Chrome'
-import {
-  site,
-  platforms,
-  niches,
-  steps,
-  creative,
-  auditChecks,
-  fitTraits,
-  faqs,
-  results,
-  ecommerceComingSoon,
-} from '@/content/site'
+import { Header, Footer, Ticker } from '@/components/Chrome'
+import { HouseStage } from '@/components/hero/HouseStage'
+import { Configurator } from '@/components/Configurator'
+import { site, niches, packages, creativeOptions, facts, steps, auditChecks, faqs } from '@/content/site'
+
+const marks: Record<string, React.ReactNode> = {
+  meta: <>Meta</>,
+  google: <>Google</>,
+  full: (
+    <>
+      Meta<em>+</em>Google
+    </>
+  ),
+}
 
 export default function Home() {
-  const localWord = site.localArea || 'near us'
+  const remote = creativeOptions.filter((c) => c.id !== 'shoot')
 
   return (
     <>
       <Header />
       <main>
-        {/* Hero */}
+        {/* Hero: copy on the side, floating 360° house */}
         <section className="hero">
-          <div className="wrap hero-inner">
-            <div className="eyebrow">{site.tagline}</div>
-            <h1>
-              More booked jobs. <span>Not more clicks.</span>
-            </h1>
-            <p className="lede">
-              We run paid ads for plumbers, HVAC, roofers, dentists, med spas, and other local pros, and we
-              make the creative that goes in them. One client per niche, per area.
-            </p>
-            <div className="hero-ctas">
-              <Link href="/audit" className="btn btn-primary">
-                Get my free audit
-              </Link>
-              <Link href="/#how" className="btn btn-ghost">
-                How it works
-              </Link>
+          <div className="wrap hero-grid">
+            <div className="hero-copy">
+              <p className="hero-sub">{site.tagline}. Based in Edmond, Oklahoma.</p>
+              <h1 className="display hero-title">
+                More booked
+                <span>jobs.</span>
+              </h1>
+              <p className="lede">
+                Pick a package. We make the ads, run them on Google and Meta, and send the leads straight to
+                your phone. You just do the work.
+              </p>
+              <div className="hero-ctas">
+                <Link href="/#lineup" className="btn btn-brand">
+                  Shop packages <span className="arrow">→</span>
+                </Link>
+                <Link href="/audit" className="btn btn-line">
+                  Free audit
+                </Link>
+              </div>
+              <div className="hero-meta">
+                <span>Done for you</span>
+                <span>One client per area</span>
+                <span>Live dashboard</span>
+              </div>
             </div>
-            <p className="hero-note">Free. Takes 60 seconds to request.</p>
-            <div className="platforms" aria-label="Platforms">
-              {platforms.map((p) => (
-                <span key={p} className="pill">
-                  {p} Ads
-                </span>
+            <HouseStage />
+          </div>
+        </section>
+
+        <Ticker />
+
+        {/* Product lineup */}
+        <section className="section" id="lineup">
+          <div className="wrap">
+            <div className="section-head-row" data-reveal>
+              <div className="section-head" style={{ marginBottom: 0 }}>
+                <div className="kicker kicker-brand">The lineup</div>
+                <h2 className="display h2">Pick your package.</h2>
+              </div>
+              <p className="lede">
+                Every package is fully done for you: strategy, creative, setup, tracking, and weekly
+                optimization.
+              </p>
+            </div>
+            <div className="lineup">
+              {packages.map((p, i) => (
+                <article
+                  key={p.id}
+                  className={`product${p.badge ? ' product-featured' : ''}`}
+                  data-reveal
+                  data-reveal-delay={i * 120}
+                >
+                  <div className="product-top">
+                    <span className="product-code">{p.code}</span>
+                    {p.badge && <span className="badge">{p.badge}</span>}
+                  </div>
+                  <div className="product-visual" aria-hidden="true">
+                    <span className={`platform-mark${p.id === 'full' ? ' is-long' : ''}`}>{marks[p.id]}</span>
+                  </div>
+                  <div>
+                    <h3 className="display">{p.name}</h3>
+                    <div className="product-sub">{p.sub}</div>
+                  </div>
+                  <p className="product-pitch">{p.pitch}</p>
+                  <ul className="spec">
+                    {p.includes.map((x) => (
+                      <li key={x}>{x}</li>
+                    ))}
+                  </ul>
+                  <div className="product-foot">
+                    <div className="price-row">
+                      <span>Price</span>
+                      <strong>{p.price || 'Quoted on your call'}</strong>
+                    </div>
+                    <Link
+                      href={`/audit?package=${p.id}`}
+                      className={`btn btn-block ${p.badge ? 'btn-brand' : 'btn-line'}`}
+                    >
+                      Get {p.name} <span className="arrow">→</span>
+                    </Link>
+                  </div>
+                </article>
               ))}
             </div>
           </div>
         </section>
 
-        <div className="niches">
-          <div className="wrap niche-row">
-            {niches.map((n) => (
-              <span key={n}>{n}</span>
-            ))}
-          </div>
-        </div>
-
-        {/* What we do */}
+        {/* Facts */}
         <section className="section">
-          <div className="wrap">
-            <div className="section-head">
-              <div className="eyebrow">Who we are</div>
-              <h2 className="display">A paid ads agency. That’s it.</h2>
-              <p className="lede">
-                No SEO, no websites, no social posting. We run ads on Meta, Google, and TikTok for businesses
-                that serve their community, and because that’s all we do, we’re very good at it.
-              </p>
+          <div className="wrap facts">
+            <h2 className="display facts-title" data-reveal>
+              Built
+              <br />
+              different.
+            </h2>
+            <div className="fact-table" data-reveal data-reveal-delay={120}>
+              {facts.map((f) => (
+                <div key={f.n + f.body} className={`fact-row${f.highlight ? ' is-hl' : ''}`}>
+                  <div className="fact-n">
+                    {f.n}
+                    {f.unit && <small>{f.unit}</small>}
+                  </div>
+                  <p>{f.body}</p>
+                </div>
+              ))}
             </div>
-            <div className="grid grid-3">
-              <div className="card">
-                <h3>Leads, not likes</h3>
-                <p>Every campaign is built around calls, form fills, and booked jobs, and tracked to them.</p>
-              </div>
-              <div className="card">
-                <h3>Creative included</h3>
-                <p>We shoot or produce the ads ourselves, so you’re never stuck waiting on content.</p>
-              </div>
-              <div className="card">
-                <h3>A live dashboard</h3>
-                <p>Log in any time to see spend, leads, and cost per lead. No waiting on a monthly PDF.</p>
-              </div>
+          </div>
+        </section>
+
+        {/* Configurator */}
+        <section className="section" id="build">
+          <div className="wrap">
+            <div className="section-head" data-reveal>
+              <div className="kicker kicker-brand">Configure</div>
+              <h2 className="display h2">Build your package.</h2>
+              <p className="lede">Choose your platform, then how we make your ads.</p>
+            </div>
+            <div data-reveal>
+              <Configurator />
             </div>
           </div>
         </section>
 
         {/* Creative */}
-        <section className="section" id="creative">
-          <div className="wrap">
-            <div className="section-head">
-              <div className="eyebrow">Creative</div>
-              <h2 className="display">We handle the content too.</h2>
-              <p className="lede">Great ads need great footage. Wherever you are, we’ve got a way to get it.</p>
+        <section className="section creative">
+          <div className="creative-ghost" aria-hidden="true">
+            Shoot
+          </div>
+          <div className="wrap creative-inner">
+            <div className="section-head" data-reveal>
+              <div className="kicker kicker-brand">Creative included</div>
+              <h2 className="display h2">We make the ads too.</h2>
             </div>
-            <div className="creative">
-              <div className="card card-feature">
-                <div className="eyebrow">If you’re {localWord}</div>
-                <h3>{creative.local.title}</h3>
-                <p>{creative.local.body}</p>
-              </div>
-              <div className="card card-plain">
-                <h3 className="big">{creative.remote.title}</h3>
-                <div className="option-list">
-                  {creative.remote.options.map((o) => (
-                    <div key={o.title} className="option">
-                      <strong>{o.title}</strong>
-                      <span>{o.body}</span>
-                    </div>
-                  ))}
+            <div className="creative-grid">
+              <div className="creative-card is-local" data-reveal>
+                <div className="kicker">If you’re {site.localArea}</div>
+                <h3 className="display">We come shoot it all.</h3>
+                <p>
+                  Your crew, your trucks, your finished jobs. We show up, film everything, and turn it into ads.
+                  You don’t lift a finger.
+                </p>
+                <div className="radius" aria-hidden="true">
+                  <span>
+                    25 mi
+                    <small>Edmond, OK</small>
+                  </span>
                 </div>
+              </div>
+              <div className="creative-card" data-reveal data-reveal-delay={120}>
+                <div className="kicker">Anywhere else</div>
+                <h3 className="display">Still covered.</h3>
+                <ul className="opt-list">
+                  {remote.map((o, i) => (
+                    <li key={o.id}>
+                      <span className="num-ghost">0{i + 1}</span>
+                      <strong>{o.name}</strong>
+                      <span>{o.body}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
         </section>
 
+        <Ticker tone="ink" items={niches} />
+
         {/* How it works */}
         <section className="section" id="how">
           <div className="wrap">
-            <div className="section-head">
-              <div className="eyebrow">How it works</div>
-              <h2 className="display">It starts with a free audit.</h2>
+            <div className="section-head" data-reveal>
+              <div className="kicker kicker-brand">How it works</div>
+              <h2 className="display h2">Four steps. Zero busywork.</h2>
             </div>
-            <div className="grid grid-4">
+            <div className="steps grid-lines">
               {steps.map((s, i) => (
-                <div key={s.title} className="card">
-                  <div className="step-num">{i + 1}</div>
-                  <h3>{s.title}</h3>
+                <div key={s.title} className="step" data-reveal data-reveal-delay={i * 100}>
+                  <span className="num-ghost">0{i + 1}</span>
+                  <h3 className="display">{s.title}</h3>
                   <p>{s.body}</p>
                 </div>
               ))}
@@ -134,99 +209,41 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Market lock */}
-        <section className="section">
-          <div className="wrap lock">
-            <div className="lock-big">
-              Your market.
-              <br />
-              <span>Locked.</span>
-            </div>
-            <div className="section-head" style={{ marginBottom: 0 }}>
-              <div className="eyebrow">One client per niche, per area</div>
-              <p className="lede">
-                When we take you on, we close your niche in your area. We won’t take on a competitor in your
-                market for as long as you’re a client. Period.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Results: only shows once real results are added in content/site.ts */}
-        {results.length > 0 && (
-          <section className="section" id="results">
-            <div className="wrap">
-              <div className="section-head">
-                <div className="eyebrow">Real campaigns · Real numbers</div>
-                <h2 className="display">What good looks like.</h2>
-              </div>
-              <div className="grid grid-3">
-                {results.map((r) => (
-                  <div key={r.tag + r.metric} className="card">
-                    <div className="result-tag">{r.tag}</div>
-                    <div className="result-num">{r.number}</div>
-                    <h3>{r.metric}</h3>
-                    <p>{r.note}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        )}
-
         {/* Audit */}
         <section className="section">
-          <div className="wrap">
-            <div className="section-head">
-              <div className="eyebrow">The free audit</div>
-              <h2 className="display">Find out where your leads are leaking.</h2>
-            </div>
-            <div className="grid grid-5">
-              {auditChecks.map((c) => (
-                <div key={c.title} className="card">
-                  <h3>{c.title}</h3>
-                  <p>{c.body}</p>
-                </div>
-              ))}
-            </div>
-            <div style={{ marginTop: 28 }}>
-              <Link href="/audit" className="btn btn-primary">
-                Get my free audit
-              </Link>
-            </div>
-          </div>
-        </section>
-
-        {/* Fit */}
-        <section className="section">
-          <div className="wrap">
-            <div className="section-head">
-              <div className="eyebrow">Who we’re looking for</div>
-              <h2 className="display">We’re selective on purpose.</h2>
+          <div className="wrap audit-band">
+            <div className="section-head" data-reveal>
+              <div className="kicker kicker-brand">Step one is free</div>
+              <h2 className="display h2">Find your leaks.</h2>
               <p className="lede">
-                We work with a small number of clients and go deep with each one. The right fit gets
-                exceptional results.
+                Every package starts with a free audit of your site and ads. You’ll see exactly what’s costing
+                you jobs, whether or not we work together.
               </p>
+              <div>
+                <Link href="/audit" className="btn btn-brand">
+                  Get my free audit <span className="arrow">→</span>
+                </Link>
+              </div>
             </div>
-            <div className="grid grid-3">
-              {fitTraits.map((t) => (
-                <div key={t.title} className="card">
-                  <h3>{t.title}</h3>
-                  <p>{t.body}</p>
-                </div>
+            <ul className="audit-checks" data-reveal data-reveal-delay={120}>
+              {auditChecks.map((c) => (
+                <li key={c.title}>
+                  <strong>{c.title}</strong>
+                  <span>{c.body}</span>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </section>
 
         {/* FAQ */}
         <section className="section" id="faq">
-          <div className="wrap narrow">
-            <div className="section-head">
-              <div className="eyebrow">FAQ</div>
-              <h2 className="display">Questions we get a lot.</h2>
+          <div className="wrap faq-grid">
+            <div className="section-head" data-reveal>
+              <div className="kicker kicker-brand">FAQ</div>
+              <h2 className="display h2">Good questions.</h2>
             </div>
-            <div className="faq">
+            <div className="faq" data-reveal>
               {faqs.map((f) => (
                 <details key={f.q}>
                   <summary>{f.q}</summary>
@@ -238,26 +255,23 @@ export default function Home() {
         </section>
 
         {/* Final CTA */}
-        <section className="section">
-          <div className="wrap" style={{ display: 'grid', gap: 20 }}>
-            <div className="cta-band">
-              <div className="eyebrow">Free · No obligation</div>
-              <h2>See what your ads could be doing.</h2>
-              <p className="lede">
-                Request your audit. If it looks like a fit, we’ll set up a demo call and walk you through it.
-              </p>
-              <Link href="/audit" className="btn btn-primary">
-                Get my free audit
+        <section className="cta">
+          <div className="wrap cta-inner" data-reveal>
+            <div className="kicker">Your area might still be open</div>
+            <h2 className="display">
+              Claim your
+              <br />
+              <span>market.</span>
+            </h2>
+            <p>We take one client per niche, per area. Grab your package before a competitor does.</p>
+            <div className="hero-ctas">
+              <Link href="/#lineup" className="btn btn-brand">
+                Shop packages <span className="arrow">→</span>
+              </Link>
+              <Link href="/audit" className="btn btn-line">
+                Free audit
               </Link>
             </div>
-            {ecommerceComingSoon && (
-              <div className="soon">
-                <span>Run an online store? Ecommerce ads are coming to Higher Level soon.</span>
-                <Link href="/audit?type=ecommerce" className="btn btn-ghost">
-                  Get on the list
-                </Link>
-              </div>
-            )}
           </div>
         </section>
       </main>

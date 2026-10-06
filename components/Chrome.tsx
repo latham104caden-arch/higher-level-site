@@ -1,20 +1,29 @@
 import Link from 'next/link'
-import { site } from '@/content/site'
+import { site, ticker } from '@/content/site'
+
+export function Wordmark({ className = '' }: { className?: string }) {
+  return (
+    <span className={`wordmark ${className}`} role="img" aria-label={site.name}>
+      {site.name}
+    </span>
+  )
+}
 
 export function Header() {
   return (
     <header className="header">
       <div className="wrap header-inner">
-        <Link href="/" className="logo" aria-label={`${site.name} home`}>
-          <img src="/logo.png" alt={site.name} width={1143} height={372} />
+        <Link href="/" aria-label={`${site.name} home`}>
+          <Wordmark />
         </Link>
         <nav className="nav" aria-label="Main">
-          <Link href="/#how">How it works</Link>
-          <Link href="/#creative">Creative</Link>
+          <Link href="/#lineup">Packages</Link>
+          <Link href="/#build">Build yours</Link>
+          <Link href="/results">Results</Link>
           <Link href="/#faq">FAQ</Link>
           <a href={site.clientLoginUrl}>Client login</a>
         </nav>
-        <Link href="/audit" className="btn btn-primary">
+        <Link href="/audit" className="btn btn-brand btn-sm">
           Free audit
         </Link>
       </div>
@@ -22,18 +31,48 @@ export function Header() {
   )
 }
 
+export function Ticker({ items = ticker, tone = 'brand' }: { items?: string[]; tone?: 'brand' | 'ink' }) {
+  const row = [...items, ...items]
+  return (
+    <div className={`ticker ticker-${tone}`} aria-hidden="true">
+      <div className="ticker-track">
+        {row.map((t, i) => (
+          <span key={i}>{t}</span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export function Footer() {
   return (
     <footer className="footer">
-      <div className="wrap footer-inner">
-        <div>
-          © {new Date().getFullYear()} {site.name} · Based in {site.homeBase} · {site.domain}
+      <div className="wrap">
+        <div className="footer-big" aria-hidden="true">
+          Higher Level
         </div>
-        <nav aria-label="Footer">
-          <Link href="/audit">Free audit</Link>
-          <a href={site.clientLoginUrl}>Client login</a>
-          <Link href="/privacy">Privacy</Link>
-        </nav>
+        <div className="footer-grid">
+          <div>
+            <Wordmark />
+            <p>
+              Done-for-you Google & Meta ads.
+              <br />
+              Based in {site.homeBase}.
+            </p>
+          </div>
+          <nav aria-label="Footer">
+            <Link href="/#lineup">Packages</Link>
+            <Link href="/results">Results</Link>
+            <Link href="/audit">Free audit</Link>
+            <a href={site.clientLoginUrl}>Client login</a>
+            <Link href="/privacy">Privacy</Link>
+          </nav>
+          <div className="footer-fine">
+            © {new Date().getFullYear()} {site.name}
+            <br />
+            {site.domain}
+          </div>
+        </div>
       </div>
     </footer>
   )

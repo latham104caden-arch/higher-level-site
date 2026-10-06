@@ -7,10 +7,9 @@ import { site } from '@/content/site'
 
 type Status = 'idle' | 'sending' | 'done' | 'error'
 
-export function AuditForm({ defaultType }: { defaultType: string }) {
+export function AuditForm({ pkg, creative }: { pkg: string; creative: string }) {
   const [status, setStatus] = useState<Status>('idle')
   const [error, setError] = useState('')
-  const [isEcom, setIsEcom] = useState(defaultType === 'ecommerce')
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -29,7 +28,6 @@ export function AuditForm({ defaultType }: { defaultType: string }) {
         setStatus('error')
         return
       }
-      setIsEcom(data.type === 'ecommerce')
       setStatus('done')
       const w = window as unknown as { fbq?: (...args: unknown[]) => void }
       w.fbq?.('track', 'Lead')
@@ -42,29 +40,17 @@ export function AuditForm({ defaultType }: { defaultType: string }) {
   if (status === 'done') {
     return (
       <div className="success" role="status">
-        <div className="eyebrow">Request received</div>
-        {isEcom ? (
+        <div className="kicker kicker-brand">Request received</div>
+        <h2 className="display">You’re in.</h2>
+        {site.bookingUrl ? (
           <>
-            <h2>You’re on the list.</h2>
-            <p>Our ecommerce offer is launching soon. We’ll reach out as soon as it’s ready.</p>
+            <p>New to Higher Level? Grab a time for your demo call and we’ll walk you through your audit live.</p>
+            <a href={site.bookingUrl} className="btn btn-brand" target="_blank" rel="noopener noreferrer">
+              Book my demo call <span className="arrow">→</span>
+            </a>
           </>
         ) : (
-          <>
-            <h2>Your audit is in the works.</h2>
-            {site.bookingUrl ? (
-              <>
-                <p>
-                  New to Higher Level? Grab a time for your demo call now and we’ll walk you through the audit
-                  live.
-                </p>
-                <a href={site.bookingUrl} className="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                  Book my demo call
-                </a>
-              </>
-            ) : (
-              <p>We’ll reach out within one business day to set up your demo call and walk you through it.</p>
-            )}
-          </>
+          <p>We’ll reach out within one business day to set up your demo call and walk you through your audit.</p>
         )}
         <Link href="/" className="form-fine">
           ← Back to home
@@ -74,7 +60,9 @@ export function AuditForm({ defaultType }: { defaultType: string }) {
   }
 
   return (
-    <form className="form" onSubmit={onSubmit} noValidate={false}>
+    <form className="form" onSubmit={onSubmit}>
+      <input type="hidden" name="package" value={pkg} />
+      <input type="hidden" name="creative" value={creative} />
       <div className="form-row">
         <div className="field">
           <label htmlFor="name">Your name</label>
@@ -109,13 +97,7 @@ export function AuditForm({ defaultType }: { defaultType: string }) {
       </div>
       <div className="field">
         <label htmlFor="type">What kind of business?</label>
-        <select
-          id="type"
-          name="type"
-          required
-          defaultValue={defaultType}
-          onChange={(e) => setIsEcom(e.target.value === 'ecommerce')}
-        >
+        <select id="type" name="type" required defaultValue="">
           <option value="" disabled>
             Choose one
           </option>
@@ -128,13 +110,8 @@ export function AuditForm({ defaultType }: { defaultType: string }) {
       </div>
       <div className="form-row">
         <div className="field">
-          <label htmlFor="area">{isEcom ? 'Where do you ship?' : 'Service area'}</label>
-          <input
-            id="area"
-            name="area"
-            placeholder={isEcom ? 'US, worldwide…' : 'City, state'}
-            maxLength={200}
-          />
+          <label htmlFor="area">Service area</label>
+          <input id="area" name="area" placeholder="City, state" maxLength={200} />
         </div>
         <div className="field">
           <label htmlFor="spend">Current ad spend</label>
@@ -158,11 +135,12 @@ export function AuditForm({ defaultType }: { defaultType: string }) {
           {error}
         </p>
       )}
-      <button type="submit" className="btn btn-primary" disabled={status === 'sending'}>
-        {status === 'sending' ? 'Sending…' : 'Get my free audit'}
+      <button type="submit" className="btn btn-brand btn-block" disabled={status === 'sending'}>
+        {status === 'sending' ? 'Sending…' : pkg ? 'Claim my package' : 'Get my free audit'}
       </button>
       <p className="form-fine">
-        We’ll only use this to send your audit and set up your call. See our <Link href="/privacy">privacy policy</Link>.
+        Starts with a free audit. We’ll only use this to send it and set up your call. See our{' '}
+        <Link href="/privacy">privacy policy</Link>.
       </p>
     </form>
   )

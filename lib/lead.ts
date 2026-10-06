@@ -1,9 +1,10 @@
+import { packages, creativeOptions } from '@/content/site'
+
 export const businessTypes = [
   { value: 'home-services', label: 'Home services (plumbing, HVAC, roofing, etc.)' },
   { value: 'health', label: 'Dental, med spa, or clinic' },
   { value: 'legal', label: 'Law firm' },
   { value: 'other-service', label: 'Other local service' },
-  { value: 'ecommerce', label: 'Online store (ecommerce)' },
 ] as const
 
 export const adSpendRanges = [
@@ -23,6 +24,8 @@ export type Lead = {
   type: string
   area: string
   spend: string
+  package: string
+  creative: string
 }
 
 const limits: Record<keyof Lead, number> = {
@@ -34,6 +37,15 @@ const limits: Record<keyof Lead, number> = {
   type: 40,
   area: 200,
   spend: 60,
+  package: 20,
+  creative: 20,
+}
+
+export function packageLabel(pkg: string, creative: string): string {
+  const p = packages.find((x) => x.id === pkg)
+  const c = creativeOptions.find((x) => x.id === creative)
+  if (!p) return ''
+  return c ? `${p.code} ${p.name} + ${c.name}` : `${p.code} ${p.name}`
 }
 
 export function parseLead(input: unknown): { lead?: Lead; error?: string } {
@@ -51,6 +63,8 @@ export function parseLead(input: unknown): { lead?: Lead; error?: string } {
   if (lead.phone.replace(/\D/g, '').length < 10) return { error: 'Please add a valid phone number.' }
   if (!businessTypes.some((t) => t.value === lead.type)) return { error: 'Please pick your business type.' }
   if (lead.spend && !(adSpendRanges as readonly string[]).includes(lead.spend)) lead.spend = ''
+  if (!packages.some((p) => p.id === lead.package)) lead.package = ''
+  if (!creativeOptions.some((c) => c.id === lead.creative)) lead.creative = ''
   return { lead }
 }
 

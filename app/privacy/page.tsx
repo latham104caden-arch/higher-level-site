@@ -10,7 +10,7 @@ export default function Privacy() {
     <>
       <Header />
       <main className="wrap narrow prose">
-        <h1>Privacy Policy</h1>
+        <h1 className="display">Privacy Policy</h1>
         <p>
           This explains what {site.name} collects on {site.domain} and how we use it.
         </p>
