@@ -941,6 +941,31 @@ main { overflow-x: clip; }
   .review blockquote { font-size: 15px; }
 }
 
+/* Phones: compact price tag and steps */
+@media (max-width: 639px) {
+  .price-tag {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    box-shadow: 0 10px 24px -16px rgba(0, 0, 0, 0.6);
+  }
+  .price-tag span { font-size: 10px; letter-spacing: 0.14em; }
+  .price-tag strong { font-size: 22px; }
+  .price-tag small { font-size: 12px; }
+  .section-head-row { gap: 14px; margin-bottom: 22px; }
+
+  #how { padding: 44px 0 52px; }
+  #how .h2 { font-size: 34px; }
+  #how .section-head { margin-bottom: 18px; }
+  .steps { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .step { padding: 14px; gap: 6px; border-radius: 16px; }
+  .step .num-ghost { font-size: 30px; }
+  .step h3 { font-size: 20px; }
+  .step p { font-size: 12.5px; line-height: 1.45; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .js [data-reveal] { opacity: 1; transform: none; }
