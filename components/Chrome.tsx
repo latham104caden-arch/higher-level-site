@@ -18,7 +18,7 @@ export function Header() {
         </Link>
         <nav className="nav" aria-label="Main">
           <Link href="/#lineup">Packages</Link>
-          <Link href="/#build">Build yours</Link>
+          <Link href="/#how">How it works</Link>
           <Link href="/results">Results</Link>
           <Link href="/#faq">FAQ</Link>
           <a href={site.clientLoginUrl}>Client login</a>

@@ -14,15 +14,25 @@ export const site = {
 }
 
 export const ticker = [
-  'Meta Ads',
-  'Google Ads',
-  'On-site shoots',
-  'Static ads',
-  'AI content',
+  '4× average ROAS',
+  '33 clients',
+  '9 niches',
+  '8 states',
+  'Google & Meta ads',
   'One client per area',
-  'Live results dashboard',
+  'On-site shoots',
   'Built in Edmond, OK',
 ]
+
+// Owner-provided figures (2026-10). Update here when they change.
+export const stats = [
+  { n: '4', unit: '×', label: 'Average ROAS', note: 'Across our client campaigns' },
+  { n: '33', unit: '', label: 'Clients', note: 'Home service businesses' },
+  { n: '9', unit: '', label: 'Niches', note: 'One client per niche, per area' },
+  { n: '8', unit: '', label: 'States', note: 'Based in Edmond, Oklahoma' },
+]
+
+export const startingPrice = '$745'
 
 export const niches = [
   'Plumbing',
@@ -132,13 +142,6 @@ export const creativeOptions = [
   },
 ]
 
-// Facts only. No invented results here.
-export const facts = [
-  { n: '25', unit: 'mi', body: 'In-person shoot radius around Edmond, Oklahoma.' },
-  { n: '2', unit: '', body: 'Platforms we run: Google, and Meta (Facebook + Instagram).' },
-  { n: '1', unit: '', body: 'Client per niche, per area. Your market stays yours.', highlight: true },
-]
-
 export const steps = [
   { title: 'Free audit', body: 'We review your site, tracking, and any ads you run now.' },
   { title: 'Demo call', body: 'We walk through what we found and confirm your area is open.' },
@@ -170,6 +173,10 @@ export const faqs = [
   {
     q: 'Do you do SEO, websites, or social posting?',
     a: 'No. We run Google and Meta ads and make the creative that goes in them. That focus is why we’re good at it.',
+  },
+  {
+    q: 'How much does it cost?',
+    a: 'Packages start at $745 a month. After your free audit, we’ll quote your exact package on the demo call.',
   },
   {
     q: 'Is the audit really free?',

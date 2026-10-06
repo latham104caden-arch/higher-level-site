@@ -459,81 +459,6 @@ main { overflow-x: clip; }
 .product-featured .pv-ghost { color: rgba(255, 255, 255, 0.12); }
 @media (min-width: 900px) { .product-wrap:nth-child(2) { transform: translateY(-14px); } .js .product-wrap:nth-child(2)[data-reveal].is-in { transform: translateY(-14px); } }
 
-/* Configurator */
-.config {
-  display: grid;
-  gap: 0;
-  border-radius: var(--r-lg);
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.55);
-  border: 1px solid var(--glass-line);
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
-  box-shadow: var(--shadow-lg);
-}
-@media (min-width: 960px) { .config { grid-template-columns: 1.25fr 1fr; } }
-.config-col { padding: 26px; display: grid; gap: 16px; align-content: start; }
-@media (min-width: 960px) { .config-col { padding: 40px; } }
-.config-label { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--dim); }
-.config-pkgs { display: grid; gap: 10px; margin-bottom: 14px; }
-@media (min-width: 640px) { .config-pkgs { grid-template-columns: repeat(3, 1fr); } }
-.config-pkg {
-  text-align: left;
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 14px;
-  display: grid;
-  gap: 2px;
-  cursor: pointer;
-  transition: border-color 200ms ease, background-color 200ms ease, transform 200ms var(--ease), box-shadow 200ms ease;
-}
-.config-pkg strong { font-family: var(--display); font-stretch: 72%; font-size: 24px; text-transform: uppercase; line-height: 1.05; }
-.config-pkg span:last-child { font-size: 12px; color: var(--muted); }
-.config-pkg:hover { transform: translateY(-2px); border-color: var(--line-strong); }
-.config-pkg.is-on { border-color: var(--brand); background: #fff; box-shadow: 0 0 0 1px var(--brand), 0 14px 30px -16px var(--brand-glow); }
-.config-code { font-size: 11px; letter-spacing: 0.14em; color: var(--dim); font-weight: 600; }
-.config-swatches { display: flex; gap: 14px; }
-.swatch {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 0;
-  cursor: pointer;
-  box-shadow: inset 0 -8px 14px rgba(0, 0, 0, 0.22), inset 0 6px 10px rgba(255, 255, 255, 0.35), 0 8px 16px -8px rgba(0, 0, 0, 0.4);
-  transition: transform 200ms var(--ease), box-shadow 200ms ease;
-}
-.swatch:hover { transform: translateY(-3px) scale(1.06); }
-.swatch.is-on { box-shadow: inset 0 -8px 14px rgba(0, 0, 0, 0.22), inset 0 6px 10px rgba(255, 255, 255, 0.35), 0 0 0 3px #fff, 0 0 0 4px var(--brand), 0 10px 20px -8px var(--brand-glow); }
-.config-creative { display: grid; gap: 4px; }
-.config-creative strong { font-family: var(--display); font-stretch: 72%; font-size: 30px; text-transform: uppercase; line-height: 1; }
-.config-note { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--brand); font-weight: 700; }
-.config-creative p { color: var(--muted); font-size: 15px; margin-top: 4px; }
-.config-summary { padding: 26px; display: grid; gap: 16px; align-content: start; background: rgba(255, 255, 255, 0.7); border-top: 1px solid var(--line); }
-@media (min-width: 960px) { .config-summary { padding: 40px; border-top: 0; border-left: 1px solid var(--line); } }
-.config-build h3 { font-family: var(--display); font-stretch: 72%; font-weight: 800; font-size: 54px; text-transform: uppercase; line-height: 0.95; color: var(--brand); }
-.config-plus { font-family: var(--display); font-stretch: 72%; font-weight: 700; font-size: 24px; text-transform: uppercase; }
-.config-list { display: grid; border-top: 1px solid var(--line); }
-.config-list li { font-size: 14px; padding: 8px 0; border-bottom: 1px solid var(--line); display: flex; gap: 10px; }
-.config-list li::before { content: '✓'; color: var(--brand); font-weight: 700; }
-.config-price { display: flex; justify-content: space-between; align-items: baseline; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-.config-price strong { font-family: var(--display); font-stretch: 72%; font-size: 24px; color: var(--ink); text-transform: none; letter-spacing: 0; }
-.config-fine { font-size: 13px; color: var(--muted); }
-
-/* Facts */
-.facts { display: grid; gap: 28px; align-items: center; }
-@media (min-width: 900px) { .facts { grid-template-columns: 0.8fr 1.2fr; gap: 60px; } }
-.facts-title { font-size: clamp(48px, 8vw, 92px); }
-.fact-table { border-radius: var(--r); overflow: hidden; background: rgba(255, 255, 255, 0.6); border: 1px solid var(--glass-line); box-shadow: var(--shadow); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
-.fact-row { display: grid; grid-template-columns: 120px 1fr; align-items: center; border-bottom: 1px solid var(--line); min-height: 78px; }
-.fact-row:last-child { border-bottom: 0; }
-.fact-row .fact-n { font-family: var(--display); font-stretch: 72%; font-weight: 700; font-size: 46px; padding: 6px 18px; line-height: 1; border-right: 1px solid var(--line); height: 100%; display: flex; align-items: center; }
-.fact-row .fact-n small { font-size: 18px; margin-left: 4px; }
-.fact-row p { padding: 12px 18px; font-size: 14px; color: var(--muted); }
-.fact-row.is-hl { background: linear-gradient(90deg, var(--brand-deep), var(--brand)); color: var(--brand-ink); }
-.fact-row.is-hl p { color: #f1d9d7; }
-.fact-row.is-hl .fact-n { border-color: rgba(255, 255, 255, 0.2); }
-
 /* Creative split */
 .creative-ghost {
   position: absolute;
@@ -798,7 +723,7 @@ main { overflow-x: clip; }
   .house-stage { height: 360px; margin: -6px -16px 0; }
   .house-hint { bottom: 2%; }
 }
-@media (max-width: 380px) { .hero-pill { font-size: 11px; letter-spacing: 0.12em; } }
+@media (max-width: 639px) { .hero-pill { font-size: 11px; letter-spacing: 0.1em; padding: 8px 14px; } }
 
 /* Section tones: makes each section easy to tell apart, especially on phones */
 .tone-paper { background: #f7f6f3; }
@@ -852,17 +777,8 @@ main { overflow-x: clip; }
   .swipe-hint { display: block; text-align: center; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-top: -6px; }
 }
 
-/* Configurator and facts: tighter on phones */
+/* Tighter cards on phones */
 @media (max-width: 639px) {
-  .config { border-radius: 24px; }
-  .config-col, .config-summary { padding: 20px; }
-  .config-pkgs { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .config-pkg { padding: 10px; border-radius: 12px; }
-  .config-pkg strong { font-size: 17px; }
-  .config-pkg span:last-child { display: none; }
-  .config-build h3 { font-size: 40px; }
-  .fact-row { grid-template-columns: 84px 1fr; min-height: 64px; }
-  .fact-row .fact-n { font-size: 36px; padding: 6px 12px; }
   .creative-card { padding: 24px; }
   .step { padding: 20px; }
   .step .num-ghost { font-size: 52px; }
@@ -915,6 +831,43 @@ main { overflow-x: clip; }
 @media (max-width: 639px) {
   .cta .hero-ctas { grid-template-columns: 1fr; }
 }
+
+/* By the numbers */
+.stats { padding: 56px 0 64px; }
+.stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+@media (min-width: 900px) { .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 18px; } }
+.stat {
+  border-radius: var(--r);
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--glass-line);
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 4px;
+  align-content: start;
+}
+@media (min-width: 900px) { .stat { padding: 28px; } }
+.stat-n { font-family: var(--display); font-stretch: 72%; font-weight: 800; font-size: clamp(54px, 9vw, 92px); line-height: 0.9; }
+.stat-n span { color: var(--brand); }
+.stat-label { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-top: 6px; }
+.stat p { font-size: 13px; color: var(--muted); }
+.stat.is-hl { background: radial-gradient(circle at 85% 15%, #a3333a 0%, var(--brand) 45%, var(--brand-deep) 100%); color: #fff; border-color: rgba(255, 255, 255, 0.15); box-shadow: 0 30px 60px -30px var(--brand-glow); }
+.stat.is-hl .stat-n span { color: #f3c4c1; }
+.stat.is-hl p { color: #f1d9d7; }
+
+/* "Starting at" price tag beside the packages heading */
+.price-tag {
+  display: grid;
+  gap: 2px;
+  padding: 14px 22px;
+  border-radius: 18px;
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow: 0 20px 40px -24px rgba(0, 0, 0, 0.6);
+}
+.price-tag span { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #b3aea7; }
+.price-tag strong { font-family: var(--display); font-stretch: 72%; font-weight: 800; font-size: 44px; line-height: 1; }
+.price-tag small { font-size: 18px; color: #b3aea7; margin-left: 2px; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }

@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { businessTypes, adSpendRanges } from '@/lib/lead'
-import { site } from '@/content/site'
+import { site, creativeOptions } from '@/content/site'
 
 type Status = 'idle' | 'sending' | 'done' | 'error'
 
@@ -62,7 +62,7 @@ export function AuditForm({ pkg, creative }: { pkg: string; creative: string }) 
   return (
     <form className="form" onSubmit={onSubmit}>
       <input type="hidden" name="package" value={pkg} />
-      <input type="hidden" name="creative" value={creative} />
+
       <div className="form-row">
         <div className="field">
           <label htmlFor="name">Your name</label>
@@ -104,6 +104,17 @@ export function AuditForm({ pkg, creative }: { pkg: string; creative: string }) 
           {businessTypes.map((t) => (
             <option key={t.value} value={t.value}>
               {t.label}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="field">
+        <label htmlFor="creative">How should we make your ads?</label>
+        <select id="creative" name="creative" defaultValue={creative}>
+          <option value="">Not sure yet</option>
+          {creativeOptions.map((c) => (
+            <option key={c.id} value={c.id}>
+              {c.name} ({c.note})
             </option>
           ))}
         </select>

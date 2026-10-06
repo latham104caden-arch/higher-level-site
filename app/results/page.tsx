@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Header, Footer } from '@/components/Chrome'
+import { Stats } from '@/components/Stats'
 import { results, testimonials } from '@/content/site'
 
 export const metadata: Metadata = {
@@ -21,7 +22,9 @@ export default function ResultsPage() {
           </div>
         </section>
 
-        <section className="section">
+        <Stats />
+
+        <section className="section tone-paper">
           <div className="wrap">
             <div className="section-head" data-reveal>
               <div className="kicker kicker-brand">Case studies</div>
