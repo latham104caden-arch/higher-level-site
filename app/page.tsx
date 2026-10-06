@@ -83,7 +83,6 @@ export default function Home() {
                   <div className="product-visual" aria-hidden="true">
                     <span className="pv-ghost">{p.code.replace('HL/', '')}</span>
                     <span className={`platform-mark${p.id === 'full' ? ' is-long' : ''}`}>{marks[p.id]}</span>
-                    <span className="pv-orb" />
                   </div>
                   <div>
                     <h3 className="display">{p.name}</h3>
@@ -194,7 +193,7 @@ export default function Home() {
           </div>
         </section>
 
-        <Ticker tone="ink" items={niches} />
+        <Ticker items={niches} />
 
         {/* How it works */}
         <section className="section" id="how">
@@ -265,8 +264,6 @@ export default function Home() {
         <section className="cta">
           <div className="wrap">
           <div className="cta-card" data-reveal>
-          <span className="cta-orb" aria-hidden="true" />
-          <span className="cta-orb sm" aria-hidden="true" />
           <div className="cta-inner">
             <div className="kicker">Your area might still be open</div>
             <h2 className="display">

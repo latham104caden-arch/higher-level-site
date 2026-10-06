@@ -31,10 +31,10 @@ export function Header() {
   )
 }
 
-export function Ticker({ items = ticker, tone = 'brand' }: { items?: string[]; tone?: 'brand' | 'ink' }) {
+export function Ticker({ items = ticker }: { items?: string[] }) {
   const row = [...items, ...items]
   return (
-    <div className={`ticker ticker-${tone}`} aria-hidden="true">
+    <div className="ticker" aria-hidden="true">
       <div className="ticker-track">
         {row.map((t, i) => (
           <span key={i}>{t}</span>
