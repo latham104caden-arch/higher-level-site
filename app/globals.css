@@ -966,6 +966,35 @@ main { overflow-x: clip; }
   .step p { font-size: 12.5px; line-height: 1.45; }
 }
 
+/* "Been burned before?" */
+.why { display: grid; gap: 28px; }
+@media (min-width: 960px) { .why { grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; } }
+.promises { display: grid; gap: 12px; }
+.promises li {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 14px;
+  align-items: start;
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--glass-line);
+  box-shadow: var(--shadow-sm);
+}
+.promise-check {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 800;
+  background: radial-gradient(circle at 30% 25%, #a3333a, var(--brand) 55%, var(--brand-deep));
+}
+.promises strong { display: block; font-size: 16px; margin-bottom: 2px; }
+.promises span { color: var(--muted); font-size: 14px; }
+@media (max-width: 639px) { .promises li { padding: 14px 16px; grid-template-columns: 30px 1fr; gap: 12px; } .promise-check { width: 30px; height: 30px; font-size: 13px; } }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .js [data-reveal] { opacity: 1; transform: none; }

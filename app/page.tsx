@@ -3,7 +3,7 @@ import { Header, Footer, Ticker } from '@/components/Chrome'
 import { HouseStage } from '@/components/hero/HouseStage'
 import { Stats } from '@/components/Stats'
 import { Reviews } from '@/components/Reviews'
-import { site, packages, creativeOptions, steps, faqs, startingPrice } from '@/content/site'
+import { site, packages, creativeOptions, steps, faqs, startingPrice, promises } from '@/content/site'
 
 const marks: Record<string, React.ReactNode> = {
   meta: <>Meta</>,
@@ -39,8 +39,8 @@ export default function Home() {
                 <span>jobs.</span>
               </h1>
               <p className="lede">
-                Done-for-you Google and Meta ads for home service businesses. We make the ads, run them, and send
-                the leads straight to your phone.
+                We’re a small team out of Edmond that runs Google and Meta ads for home service businesses. We make
+                the ads, run them, and send the leads straight to your phone. No fluff, no runaround.
               </p>
               <div className="hero-ctas">
                 <Link href="/#lineup" className="btn btn-brand">
@@ -64,6 +64,35 @@ export default function Home() {
 
         {/* Proof */}
         <Stats />
+
+        {/* Burned before? */}
+        <section className="section tone-sand" id="why">
+          <div className="wrap why">
+            <div className="section-head" data-reveal>
+              <div className="kicker kicker-brand">Real talk</div>
+              <h2 className="display h2">Been burned by an agency before?</h2>
+              <p className="lede">
+                Most of our clients were. Big promises, pretty reports, no phone calls, and a bill every month. We’re
+                a small business too, so we get it. Here’s how we do things instead:
+              </p>
+            </div>
+            <ul className="promises">
+              {promises.map((p, i) => (
+                <li key={p.title} data-reveal data-reveal-delay={i * 90}>
+                  <span className="promise-check" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </span>
+                  <div>
+                    <strong>{p.title}</strong>
+                    <span>{p.body}</span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
         {/* Packages */}
         <section className="section tone-paper" id="lineup">
@@ -136,7 +165,7 @@ export default function Home() {
         <section className="section" id="reviews">
           <div className="wrap">
             <div className="section-head" data-reveal>
-              <div className="kicker kicker-brand">Client reviews</div>
+              <div className="kicker kicker-brand">Don’t take our word for it</div>
               <h2 className="display h2">Owners like you.</h2>
             </div>
             <Reviews featured />
@@ -177,8 +206,8 @@ export default function Home() {
                 <div className="kicker">If you’re {site.localArea}</div>
                 <h3 className="display">We come shoot it all.</h3>
                 <p>
-                  Your crew, your trucks, your finished jobs. We show up, film everything, and turn it into ads.
-                  You don’t lift a finger.
+                  Your crew, your trucks, your finished jobs. We show up, film it, and turn it into ads that look
+                  like you, not a stock photo. You don’t lift a finger.
                 </p>
                 <div className="radius" aria-hidden="true">
                   <span>
@@ -229,13 +258,13 @@ export default function Home() {
               <div className="cta-inner">
                 <div className="kicker">Your area might still be open</div>
                 <h2 className="display">
-                  Claim your
+                  Let’s get you
                   <br />
-                  <span>market.</span>
+                  <span>booked up.</span>
                 </h2>
                 <p>
-                  We take one client per niche, per area. Start with a free audit of your site and ads, then pick
-                  your package. From {startingPrice}/mo.
+                  No pressure, no pitch deck. Start with a free audit and we’ll tell you straight whether we can help.
+                  We only take one client per niche, per area. Packages from {startingPrice}/mo.
                 </p>
                 <div className="hero-ctas">
                   <Link href="/audit" className="btn btn-brand">

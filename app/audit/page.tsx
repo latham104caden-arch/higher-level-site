@@ -29,8 +29,9 @@ export default async function AuditPage({
             <div className="kicker kicker-brand">{label ? 'Claim your package' : 'Free audit'}</div>
             <h1 className="display">{label ? 'Let’s build it.' : 'Find your leaks.'}</h1>
             <p className="lede">
-              Tell us about your business. We’ll audit your site and ads for free, then set up a quick demo call
-              to walk you through it{label ? ' and get your package live' : ''}.
+              Tell us a little about your business. We’ll dig through your site and ads for free, then hop on a
+              quick call to walk you through what we found{label ? ' and get your package going' : ''}. No pressure,
+              no runaround.
             </p>
             {label && (
               <div className="build-chip">

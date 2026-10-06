@@ -2,7 +2,7 @@
 
 export const site = {
   name: 'Higher Level',
-  tagline: 'Done-for-you Google & Meta ads for home service businesses',
+  tagline: 'A small team in Edmond, OK running Google & Meta ads for home service businesses',
   domain: 'higherleveladz.com',
   url: 'https://www.higherleveladz.com',
   // Home base and in-person shoot radius.
@@ -64,7 +64,7 @@ export const packages: Package[] = [
     code: 'HL/01',
     name: 'Meta Ads',
     sub: 'Facebook + Instagram',
-    pitch: 'Put your work in front of homeowners in your service area, scrolling right now.',
+    pitch: 'Facebook and Instagram ads that put your work in front of homeowners near you while they’re scrolling.',
     includes: [
       'Campaign strategy and setup',
       'Ad creative made for you',
@@ -81,7 +81,7 @@ export const packages: Package[] = [
     name: 'Full Coverage',
     sub: 'Meta + Google',
     badge: 'Most complete',
-    pitch: 'Both platforms, one team, one dashboard. Catch them scrolling and searching.',
+    pitch: 'Both platforms, run by the same people. You catch them scrolling and you catch them searching.',
     includes: [
       'Everything in Meta Ads',
       'Everything in Google Ads',
@@ -97,7 +97,7 @@ export const packages: Package[] = [
     code: 'HL/02',
     name: 'Google Ads',
     sub: 'Search campaigns',
-    pitch: 'Show up the moment someone nearby searches for what you do.',
+    pitch: 'When someone nearby searches for what you do, you’re the one they call.',
     includes: [
       'Keyword research for your services',
       'Search campaign setup',
@@ -116,37 +116,45 @@ export const creativeOptions = [
     id: 'shoot',
     name: 'On-site shoot',
     note: 'Within 25 mi of Edmond, OK',
-    body: 'We come out and film your crew, your trucks, and your finished jobs.',
+    body: 'We come out and film your crew, your trucks, and your finished work.',
     swatch: 'var(--brand)',
   },
   {
     id: 'statics',
     name: 'Static ads',
     note: 'From what you have',
-    body: 'We design scroll-stopping image ads from your photos.',
+    body: 'Send us what’s on your phone. We turn it into ads that get noticed.',
     swatch: 'var(--ink)',
   },
   {
     id: 'ai',
     name: 'AI content',
     note: 'No footage needed',
-    body: 'Polished AI video and imagery built around your services.',
+    body: 'No footage? No problem. We build clean AI video and images around your services.',
     swatch: '#8a8580',
   },
   {
     id: 'remote',
     name: 'Remote shooter',
     note: 'Outside our area',
-    body: 'We line up a videographer in your state to capture real footage.',
+    body: 'We line up a videographer in your state so your ads still show the real you.',
     swatch: '#c9c4bc',
   },
 ]
 
+// "Burned before?" section: how we work.
+export const promises = [
+  { title: 'You see everything', body: 'Every dollar and every lead, live on your own dashboard. No mystery reports.' },
+  { title: 'You talk to the people doing the work', body: 'Caden and Hunter, not an account manager reading off a script.' },
+  { title: 'We tell you straight', body: 'If something’s not working, you hear it from us first, with the fix.' },
+  { title: 'Your market stays yours', body: 'One client per niche, per area. We never work for your competition.' },
+]
+
 export const steps = [
-  { title: 'Free audit', body: 'We review your site, tracking, and any ads you run now.' },
-  { title: 'Demo call', body: 'We walk through what we found and confirm your area is open.' },
-  { title: 'Launch', body: 'We make the creative, build the campaigns, and go live.' },
-  { title: 'Scale', body: 'Weekly optimization, with every lead in your live dashboard.' },
+  { title: 'Free audit', body: 'Send us your site. We’ll dig through it and your current ads and tell you where you’re losing leads.' },
+  { title: 'Quick call', body: 'We walk you through what we found. No pitch deck, no pressure. Just real numbers.' },
+  { title: 'Launch', body: 'We make the ads, build the campaigns, and get you live. You keep running your business.' },
+  { title: 'Grow', body: 'We tune things every week, and you watch the leads come in on your dashboard.' },
 ]
 
 export const auditChecks = [
@@ -159,12 +167,16 @@ export const auditChecks = [
 
 export const faqs = [
   {
+    q: 'I’ve been burned by an agency before. Why are you different?',
+    a: 'Most of our clients have been, so we get it. We’re a small team, so you talk to the people actually running your ads. You see every dollar and every lead on your dashboard, and if something isn’t working, you’ll hear it from us first, along with the fix.',
+  },
+  {
     q: 'What does “done for you” actually mean?',
-    a: 'We handle the whole thing: strategy, creative, campaign setup, tracking, and weekly optimization. You answer the phone and do the jobs.',
+    a: 'It means we handle it. Strategy, the ads themselves, setup, tracking, and weekly tweaks. You answer the phone and do the jobs.',
   },
   {
     q: 'Will you work with my competitor?',
-    a: 'No. We take one client per niche, per area. While you’re with us, nobody else in your market is.',
+    a: 'No. We take one client per niche, per area. Helping your competitor beat you would make no sense, so we don’t.',
   },
   {
     q: 'I’m not near Edmond, OK. Can you still make my ads?',
@@ -172,15 +184,15 @@ export const faqs = [
   },
   {
     q: 'Do you do SEO, websites, or social posting?',
-    a: 'No. We run Google and Meta ads and make the creative that goes in them. That focus is why we’re good at it.',
+    a: 'No. We do Google and Meta ads and the creative for them, and that’s it. Doing one thing really well beats doing ten things okay.',
   },
   {
     q: 'How much does it cost?',
-    a: 'Packages start at $745 a month. After your free audit, we’ll quote your exact package on the demo call.',
+    a: 'Packages start at $745 a month. After your free audit, we’ll give you a straight quote on the call. No surprise fees later.',
   },
   {
     q: 'Is the audit really free?',
-    a: 'Yes. You get a real look at your tracking, landing page, and ads whether or not we end up working together.',
+    a: 'Yes, really. You get an honest look at your site and ads whether or not you ever work with us.',
   },
 ]
 

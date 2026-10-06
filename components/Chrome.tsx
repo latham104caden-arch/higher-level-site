@@ -55,9 +55,9 @@ export function Footer() {
           <div>
             <Wordmark />
             <p>
-              Done-for-you Google & Meta ads.
+              A small team that gets it done.
               <br />
-              Based in {site.homeBase}.
+              Google &amp; Meta ads from {site.homeBase}.
             </p>
           </div>
           <nav aria-label="Footer">
