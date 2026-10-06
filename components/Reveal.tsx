@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
 /**
  * Adds `.is-in` to every [data-reveal] element as it scrolls into view.
@@ -8,6 +9,7 @@ import { useEffect } from 'react'
  * in the root layout) is what opts into the fade.
  */
 export function Reveal() {
+  const pathname = usePathname()
   useEffect(() => {
     if (!('IntersectionObserver' in window)) {
       document.documentElement.classList.remove('js')
@@ -28,6 +30,6 @@ export function Reveal() {
     )
     document.querySelectorAll<HTMLElement>('[data-reveal]:not(.is-in)').forEach((el) => io.observe(el))
     return () => io.disconnect()
-  }, [])
+  }, [pathname])
   return null
 }

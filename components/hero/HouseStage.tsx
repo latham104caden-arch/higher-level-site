@@ -12,7 +12,7 @@ export function HouseStage() {
 
   return (
     <div className={`house-stage${ready ? ' is-ready' : ''}`}>
-      <div className="house-band" aria-hidden="true" />
+      <div className="house-glow" aria-hidden="true" />
       <svg className="house-fallback" viewBox="0 0 200 150" aria-hidden="true">
         <ellipse cx="100" cy="138" rx="70" ry="7" fill="rgba(40,20,20,0.18)" />
         <rect x="45" y="62" width="70" height="52" fill="#f3f0ea" />
@@ -25,14 +25,27 @@ export function HouseStage() {
         <rect x="118" y="92" width="32" height="22" fill="#dcd7cf" />
       </svg>
       <HouseScene onReady={onReady} />
+
+      {/* Depth-of-field orbs: one sharp, two soft, one out of focus in front */}
+      <span className="orb orb-1" aria-hidden="true" />
+      <span className="orb orb-2" aria-hidden="true" />
+      <span className="orb orb-3" aria-hidden="true" />
+
       <div className="house-hint" aria-hidden="true">
         <span>Drag</span>
         <span>to spin</span>
         <strong>360°</strong>
       </div>
-      <span className="chip chip-a">Meta Ads</span>
-      <span className="chip chip-b">Google Ads</span>
-      <span className="chip chip-c">Shot on site</span>
+      <div className="glass-card lead-card" aria-hidden="true">
+        <span className="live-dot" />
+        <div>
+          <strong>New lead</strong>
+          <span>Just now · from your ad</span>
+        </div>
+      </div>
+      <span className="chip glass chip-a" aria-hidden="true">Meta Ads</span>
+      <span className="chip glass chip-b" aria-hidden="true">Google Ads</span>
+      <span className="chip glass chip-c" aria-hidden="true">Shot on site</span>
     </div>
   )
 }

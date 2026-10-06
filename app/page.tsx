@@ -23,6 +23,10 @@ export default function Home() {
       <main>
         {/* Hero: copy on the side, floating 360° house */}
         <section className="hero">
+          <div className="hero-ghost" aria-hidden="true">
+            <span data-parallax="0.12">Home</span>
+            <span data-parallax="-0.06">Service</span>
+          </div>
           <div className="wrap hero-grid">
             <div className="hero-copy">
               <p className="hero-sub">{site.tagline}. Based in Edmond, Oklahoma.</p>
@@ -56,6 +60,7 @@ export default function Home() {
 
         {/* Product lineup */}
         <section className="section" id="lineup">
+          <div className="sec-num" aria-hidden="true" data-parallax="0.1">01</div>
           <div className="wrap">
             <div className="section-head-row" data-reveal>
               <div className="section-head" style={{ marginBottom: 0 }}>
@@ -69,18 +74,16 @@ export default function Home() {
             </div>
             <div className="lineup">
               {packages.map((p, i) => (
-                <article
-                  key={p.id}
-                  className={`product${p.badge ? ' product-featured' : ''}`}
-                  data-reveal
-                  data-reveal-delay={i * 120}
-                >
+                <div key={p.id} className="product-wrap" data-reveal data-reveal-delay={i * 120}>
+                <article className={`product${p.badge ? ' product-featured' : ''}`} data-tilt>
                   <div className="product-top">
                     <span className="product-code">{p.code}</span>
                     {p.badge && <span className="badge">{p.badge}</span>}
                   </div>
                   <div className="product-visual" aria-hidden="true">
+                    <span className="pv-ghost">{p.code.replace('HL/', '')}</span>
                     <span className={`platform-mark${p.id === 'full' ? ' is-long' : ''}`}>{marks[p.id]}</span>
+                    <span className="pv-orb" />
                   </div>
                   <div>
                     <h3 className="display">{p.name}</h3>
@@ -105,6 +108,7 @@ export default function Home() {
                     </Link>
                   </div>
                 </article>
+                </div>
               ))}
             </div>
           </div>
@@ -134,6 +138,7 @@ export default function Home() {
 
         {/* Configurator */}
         <section className="section" id="build">
+          <div className="sec-num" aria-hidden="true" data-parallax="0.1">02</div>
           <div className="wrap">
             <div className="section-head" data-reveal>
               <div className="kicker kicker-brand">Configure</div>
@@ -148,7 +153,8 @@ export default function Home() {
 
         {/* Creative */}
         <section className="section creative">
-          <div className="creative-ghost" aria-hidden="true">
+          <div className="sec-num" aria-hidden="true" data-parallax="0.1">03</div>
+          <div className="creative-ghost" aria-hidden="true" data-parallax="-0.08">
             Shoot
           </div>
           <div className="wrap creative-inner">
@@ -192,6 +198,7 @@ export default function Home() {
 
         {/* How it works */}
         <section className="section" id="how">
+          <div className="sec-num" aria-hidden="true" data-parallax="0.1">04</div>
           <div className="wrap">
             <div className="section-head" data-reveal>
               <div className="kicker kicker-brand">How it works</div>
@@ -256,7 +263,11 @@ export default function Home() {
 
         {/* Final CTA */}
         <section className="cta">
-          <div className="wrap cta-inner" data-reveal>
+          <div className="wrap">
+          <div className="cta-card" data-reveal>
+          <span className="cta-orb" aria-hidden="true" />
+          <span className="cta-orb sm" aria-hidden="true" />
+          <div className="cta-inner">
             <div className="kicker">Your area might still be open</div>
             <h2 className="display">
               Claim your
@@ -272,6 +283,8 @@ export default function Home() {
                 Free audit
               </Link>
             </div>
+          </div>
+          </div>
           </div>
         </section>
       </main>

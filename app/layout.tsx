@@ -3,6 +3,7 @@ import { Archivo, Inter } from 'next/font/google'
 import { site } from '@/content/site'
 import { MetaPixel } from '@/components/MetaPixel'
 import { Reveal } from '@/components/Reveal'
+import { Motion } from '@/components/Motion'
 import './globals.css'
 
 const display = Archivo({ subsets: ['latin'], axes: ['wdth'], variable: '--font-display', display: 'swap' })
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {children}
         <Reveal />
+        <Motion />
         <MetaPixel />
       </body>
     </html>

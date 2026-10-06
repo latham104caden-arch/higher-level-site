@@ -222,6 +222,36 @@ export default function HouseScene({ onReady }: { onReady?: () => void }) {
     const model = buildHouse()
     scene.add(model)
 
+    // Floating map pin over the house: "local".
+    const pin = new THREE.Group()
+    const pinMat = new THREE.MeshPhysicalMaterial({ color: C.door, roughness: 0.22, metalness: 0.15, clearcoat: 1, clearcoatRoughness: 0.15 })
+    const head = new THREE.Mesh(new THREE.SphereGeometry(0.42, 40, 40), pinMat)
+    head.position.y = 0.55
+    const tip = new THREE.Mesh(new THREE.ConeGeometry(0.36, 0.85, 40), pinMat)
+    tip.rotation.x = Math.PI
+    tip.position.y = 0.05
+    const dot = new THREE.Mesh(new THREE.SphereGeometry(0.16, 24, 24), mat('#ffffff', { roughness: 0.3 }))
+    dot.position.set(0, 0.6, 0.33)
+    pin.add(head, tip, dot)
+    pin.traverse((o) => ((o as THREE.Mesh).castShadow = true))
+    pin.position.set(-0.6, 3.5, 0.2)
+    scene.add(pin)
+
+    // Glossy orbs drifting around the plinth.
+    const orbMat = new THREE.MeshPhysicalMaterial({ color: '#ffffff', roughness: 0.12, metalness: 0, clearcoat: 1, clearcoatRoughness: 0.1 })
+    const orbMatBrand = new THREE.MeshPhysicalMaterial({ color: C.door, roughness: 0.2, clearcoat: 1 })
+    const orbs = [
+      { r: 0.22, rad: 3.9, h: 1.8, speed: 0.35, phase: 0, m: orbMat },
+      { r: 0.14, rad: 3.6, h: 0.6, speed: -0.5, phase: 2.1, m: orbMatBrand },
+      { r: 0.3, rad: 4.2, h: 2.6, speed: 0.25, phase: 4.0, m: orbMat },
+    ].map((o) => {
+      const mesh = new THREE.Mesh(new THREE.SphereGeometry(o.r, 32, 32), o.m)
+      mesh.castShadow = true
+      mesh.position.set(Math.cos(o.phase) * o.rad, o.h, Math.sin(o.phase) * o.rad)
+      scene.add(mesh)
+      return { ...o, mesh }
+    })
+
     const blobMat = new THREE.MeshBasicMaterial({ map: blobTexture(), transparent: true, depthWrite: false })
     const blob = new THREE.Mesh(new THREE.PlaneGeometry(8, 8), blobMat)
     blob.rotation.x = -Math.PI / 2
@@ -287,6 +317,14 @@ export default function HouseScene({ onReady }: { onReady?: () => void }) {
       const t = clock.getElapsedTime()
       const bob = reduced ? 0 : Math.sin(t * 1.1) * 0.12
       model.position.y = bob
+      if (!reduced) {
+        pin.position.y = 3.5 + Math.sin(t * 1.6 + 1) * 0.18
+        pin.rotation.y = t * 0.9
+        for (const o of orbs) {
+          const a = o.phase + t * o.speed
+          o.mesh.position.set(Math.cos(a) * o.rad, o.h + Math.sin(t * 1.3 + o.phase) * 0.2, Math.sin(a) * o.rad)
+        }
+      }
       const s = 1 - bob * 0.6
       blob.scale.set(s, s, s)
       blobMat.opacity = 0.9 - bob * 1.5
