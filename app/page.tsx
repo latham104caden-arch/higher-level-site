@@ -14,7 +14,7 @@ import {
 } from '@/content/site'
 
 export default function Home() {
-  const localWord = site.localArea ? `in ${site.localArea}` : 'near us'
+  const localWord = site.localArea || 'near us'
 
   return (
     <>

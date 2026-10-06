@@ -5,9 +5,9 @@ export const site = {
   tagline: 'Paid ads for local service businesses',
   domain: 'higherleveladz.com',
   url: 'https://www.higherleveladz.com',
-  // Where "local" is for in-person shoots. Leave empty until confirmed;
-  // the copy falls back to "near us".
-  localArea: '',
+  // Home base and in-person shoot radius.
+  homeBase: 'Edmond, Oklahoma',
+  localArea: 'within 25 miles of Edmond, OK',
   bookingUrl: process.env.NEXT_PUBLIC_BOOKING_URL || '',
   clientLoginUrl:
     process.env.NEXT_PUBLIC_CLIENT_LOGIN_URL || 'https://higher-level-dashboard.vercel.app',
@@ -48,8 +48,8 @@ export const steps = [
 
 export const creative = {
   local: {
-    title: 'Local to us? We shoot it all.',
-    body: 'We come to you and film everything: your crew, your trucks, your work, your happy customers. You don’t lift a finger.',
+    title: 'Near Edmond? We shoot it all.',
+    body: 'Anywhere within 25 miles of Edmond, including most of the OKC metro, we come to you and film everything: your crew, your trucks, your work, your happy customers. You don’t lift a finger.',
   },
   remote: {
     title: 'Not local? You’re still covered.',
@@ -86,8 +86,8 @@ export const faqs = [
     a: 'No. We take one client per niche, per area. While you’re with us, nobody else in your market is.',
   },
   {
-    q: 'I’m not local to you. Can you still make my ads?',
-    a: 'Yes. We can use footage you already have, create AI content or static ads, or send a videographer in your state.',
+    q: 'I’m not near Edmond, OK. Can you still make my ads?',
+    a: 'Yes. We work with businesses anywhere. We can use footage you already have, create AI content or static ads, or send a videographer in your state.',
   },
   {
     q: 'Is the audit really free?',

@@ -27,7 +27,7 @@ export function Footer() {
     <footer className="footer">
       <div className="wrap footer-inner">
         <div>
-          © {new Date().getFullYear()} {site.name} · {site.domain}
+          © {new Date().getFullYear()} {site.name} · Based in {site.homeBase} · {site.domain}
         </div>
         <nav aria-label="Footer">
           <Link href="/audit">Free audit</Link>
