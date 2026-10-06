@@ -188,6 +188,84 @@ export const faqs = [
 // { tag: 'HVAC · 60 days', number: '$87 → $19', metric: 'Cost per lead', note: '...' }
 export const results: { tag: string; number: string; metric: string; note: string }[] = []
 
-// Real testimonials only. Example:
-// { quote: '...', name: 'Jane D.', business: 'Acme Roofing', niche: 'Roofing' }
-export const testimonials: { quote: string; name: string; business: string; niche: string }[] = []
+// Client reviews, provided by the owner (2026-10). Quotes are verbatim.
+// `featured` ones also show on the homepage.
+export type Testimonial = {
+  quote: string
+  name: string
+  niche: string
+  platform?: 'Meta Ads' | 'Google Ads'
+  featured?: boolean
+}
+
+export const testimonials: Testimonial[] = [
+  {
+    name: 'Sarah',
+    niche: 'Roofing',
+    platform: 'Meta Ads',
+    featured: true,
+    quote:
+      'Their Meta ads campaign got my roofing business in front of actual customers ready to book. The targeting is incredible, leads convert fast, and Caden was super responsive when we needed to adjust targeting mid-season. Honestly the best ROI I’ve seen from any marketing spend.',
+  },
+  {
+    name: 'Mike Torres',
+    niche: 'Window Cleaning',
+    platform: 'Meta Ads',
+    featured: true,
+    quote:
+      'Higher Level set up my Meta Ads and I went from 5 calls a week to 20+. They know exactly how to target homeowners in my area. Best marketing decision.',
+  },
+  {
+    name: 'Lisa Nguyen',
+    niche: 'Landscaping',
+    platform: 'Meta Ads',
+    featured: true,
+    quote:
+      'Higher Level manages my Meta ads for my landscaping company and it’s been a game changer. My cost per lead dropped significantly and my booking rate went way up. Hunter understood our seasonal fluctuations and built campaigns around spring and fall peaks. Couldn’t ask for better service at this price point.',
+  },
+  {
+    name: 'Griffin Berry',
+    niche: 'Christmas Lights',
+    platform: 'Google Ads',
+    featured: true,
+    quote:
+      'Higher Level handles my Google Ads for holiday lighting and the seasonal campaigns are perfectly timed. It’s challenging to market Christmas light installation year-round but they’ve figured out how to run campaigns during off-season that actually generate leads for next year’s bookings. Getting jobs booked months in advance now.',
+  },
+  {
+    name: 'Tom Redding',
+    niche: 'Roofing',
+    featured: true,
+    quote:
+      'I’ve been with too many marketers to count and they all sucked until one of my buddies mentioned working with the guys over at higher level and its been up hill since. ive had jobs bookout for months and never was mad about ad spend.',
+  },
+  {
+    name: 'Larry Conant',
+    niche: 'Landscaping',
+    platform: 'Meta Ads',
+    featured: true,
+    quote:
+      'I’ve been with Higher Level for 6 months. Their Meta ads keep my landscaping schedule full year-round. Great guys they understand the market and really care about what goes into it. Worth every penny.',
+  },
+  {
+    name: 'Robert Patterson',
+    niche: 'Pressure Washing',
+    quote:
+      'My pressure washing business was struggling with visibility before I found Higher Level. The previous agency was just burning through budget without results. Hunter and Caden are a game changer and i love working with them.',
+  },
+  {
+    name: 'Ethan Griffith',
+    niche: 'Landscaping',
+    platform: 'Meta Ads',
+    quote:
+      'The Meta ads from Higher Level are my main driver now. Im now able to get in front of the homeowners i want to.',
+  },
+  {
+    name: 'Duke Thornton',
+    niche: 'Detailing',
+    platform: 'Meta Ads',
+    quote: 'Started with Higher Level’s Meta ads. Consistent bookings. Quality leads. Affordable.',
+  },
+  { name: 'Jose', niche: 'Window Cleaning', platform: 'Google Ads', quote: 'Google Ads work.' },
+  { name: 'James Henderson', niche: 'Pressure Washing', platform: 'Meta Ads', quote: 'Real shit. Meta Ads through Higher Level.' },
+  { name: 'Randle Bros', niche: 'Window Cleaning', quote: 'Higher Level.' },
+]

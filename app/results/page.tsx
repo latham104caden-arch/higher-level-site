@@ -2,11 +2,12 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Header, Footer } from '@/components/Chrome'
 import { Stats } from '@/components/Stats'
+import { Reviews } from '@/components/Reviews'
 import { results, testimonials } from '@/content/site'
 
 export const metadata: Metadata = {
-  title: 'Results & Testimonials',
-  description: 'Real campaigns, real numbers, and what home service owners say about working with Higher Level.',
+  title: 'Results & Reviews',
+  description: 'Real numbers and real reviews from home service owners who run their Google and Meta ads with Higher Level.',
 }
 
 export default function ResultsPage() {
@@ -16,15 +17,25 @@ export default function ResultsPage() {
       <main>
         <section className="page-hero">
           <div className="wrap">
-            <div className="kicker kicker-brand">Real campaigns · Real numbers</div>
+            <div className="kicker kicker-brand">Real clients · Real numbers</div>
             <h1 className="display">Results.</h1>
-            <p className="lede">Numbers from real Higher Level campaigns, and what our clients say about them.</p>
+            <p className="lede">What home service owners say about running their ads with Higher Level.</p>
           </div>
         </section>
 
         <Stats />
 
-        <section className="section tone-paper">
+        <section className="section tone-paper" id="reviews">
+          <div className="wrap">
+            <div className="section-head" data-reveal>
+              <div className="kicker kicker-brand">{testimonials.length} client reviews</div>
+              <h2 className="display h2">In their words.</h2>
+            </div>
+            <Reviews />
+          </div>
+        </section>
+
+        <section className="section">
           <div className="wrap">
             <div className="section-head" data-reveal>
               <div className="kicker kicker-brand">Case studies</div>
@@ -45,39 +56,11 @@ export default function ResultsPage() {
               <div className="empty" data-reveal>
                 <h3 className="display">Case studies dropping soon.</h3>
                 <p className="lede">
-                  We’re putting the numbers together. Want to see campaigns from your industry now? We’ll walk
-                  you through them on your call.
+                  Want to see campaigns from your industry now? We’ll walk you through them on your call.
                 </p>
                 <Link href="/audit" className="btn btn-brand">
                   Get my free audit <span className="arrow">→</span>
                 </Link>
-              </div>
-            )}
-          </div>
-        </section>
-
-        <section className="section">
-          <div className="wrap">
-            <div className="section-head" data-reveal>
-              <div className="kicker kicker-brand">Testimonials</div>
-              <h2 className="display h2">In their words.</h2>
-            </div>
-            {testimonials.length > 0 ? (
-              <div className="cards-3 grid-lines">
-                {testimonials.map((t, i) => (
-                  <figure key={t.name + t.business} className="quote" data-reveal data-reveal-delay={i * 100}>
-                    <blockquote>{t.quote}</blockquote>
-                    <footer>
-                      <strong>{t.name}</strong>
-                      {t.business} · {t.niche}
-                    </footer>
-                  </figure>
-                ))}
-              </div>
-            ) : (
-              <div className="empty" data-reveal>
-                <h3 className="display">Reviews on the way.</h3>
-                <p className="lede">We only post real reviews from real clients. They’re coming.</p>
               </div>
             )}
           </div>

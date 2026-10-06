@@ -869,6 +869,78 @@ main { overflow-x: clip; }
 .price-tag strong { font-family: var(--display); font-stretch: 72%; font-weight: 800; font-size: 44px; line-height: 1; }
 .price-tag small { font-size: 18px; color: #b3aea7; margin-left: 2px; }
 
+/* Reviews: masonry on desktop, swipe row on phones (featured) */
+.reviews { columns: 1; column-gap: 18px; }
+@media (min-width: 700px) { .reviews { columns: 2; } }
+@media (min-width: 1000px) { .reviews { columns: 3; } }
+.review {
+  break-inside: avoid;
+  margin: 0 0 18px;
+  padding: 24px;
+  border-radius: var(--r);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--glass-line);
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 18px;
+}
+.review blockquote { margin: 0; font-size: 16px; line-height: 1.55; color: var(--ink); }
+.review blockquote::before {
+  content: '“';
+  display: block;
+  font-family: var(--display);
+  font-size: 64px;
+  line-height: 0.5;
+  height: 26px;
+  color: var(--brand);
+}
+.review figcaption { display: flex; align-items: center; gap: 12px; }
+.review-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex: none;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: radial-gradient(circle at 30% 25%, #a3333a, var(--brand) 55%, var(--brand-deep));
+}
+.review-who { display: grid; line-height: 1.25; }
+.review-who strong { font-size: 14px; }
+.review-who span { font-size: 12px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.review-tag {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 9px;
+  border-radius: 999px;
+  color: var(--brand);
+  background: rgba(122, 20, 24, 0.08);
+  white-space: nowrap;
+}
+.reviews-more { display: flex; justify-content: center; margin-top: 10px; }
+@media (max-width: 699px) {
+  .reviews-featured {
+    columns: auto;
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin: 0 -16px;
+    padding: 4px 16px 20px;
+    scrollbar-width: none;
+  }
+  .reviews-featured::-webkit-scrollbar { display: none; }
+  .reviews-featured .review { flex: 0 0 84%; margin: 0; scroll-snap-align: center; align-content: space-between; }
+  .review { padding: 20px; }
+  .review blockquote { font-size: 15px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .js [data-reveal] { opacity: 1; transform: none; }

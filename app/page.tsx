@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Header, Footer, Ticker } from '@/components/Chrome'
 import { HouseStage } from '@/components/hero/HouseStage'
 import { Stats } from '@/components/Stats'
+import { Reviews } from '@/components/Reviews'
 import { site, packages, creativeOptions, steps, faqs, startingPrice } from '@/content/site'
 
 const marks: Record<string, React.ReactNode> = {
@@ -128,6 +129,17 @@ export default function Home() {
             <p className="swipe-hint" aria-hidden="true">
               Swipe to see all 3 packages <span className="arrow">→</span>
             </p>
+          </div>
+        </section>
+
+        {/* Reviews */}
+        <section className="section" id="reviews">
+          <div className="wrap">
+            <div className="section-head" data-reveal>
+              <div className="kicker kicker-brand">Client reviews</div>
+              <h2 className="display h2">Owners like you.</h2>
+            </div>
+            <Reviews featured />
           </div>
         </section>
 
