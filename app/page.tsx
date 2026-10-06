@@ -29,14 +29,17 @@ export default function Home() {
           </div>
           <div className="wrap hero-grid">
             <div className="hero-copy">
-              <p className="hero-sub">{site.tagline}. Based in Edmond, Oklahoma.</p>
+              <p className="hero-pill">
+                <span className="hero-pill-dot" />
+                Google &amp; Meta ads · Edmond, OK
+              </p>
               <h1 className="display hero-title">
                 More booked
                 <span>jobs.</span>
               </h1>
               <p className="lede">
-                Pick a package. We make the ads, run them on Google and Meta, and send the leads straight to
-                your phone. You just do the work.
+                Done-for-you ads for home service businesses. We make the ads, run them, and send the leads
+                straight to your phone.
               </p>
               <div className="hero-ctas">
                 <Link href="/#lineup" className="btn btn-brand">
@@ -59,7 +62,7 @@ export default function Home() {
         <Ticker />
 
         {/* Product lineup */}
-        <section className="section" id="lineup">
+        <section className="section tone-paper" id="lineup">
           <div className="sec-num" aria-hidden="true" data-parallax="0.1">01</div>
           <div className="wrap">
             <div className="section-head-row" data-reveal>
@@ -89,11 +92,16 @@ export default function Home() {
                     <div className="product-sub">{p.sub}</div>
                   </div>
                   <p className="product-pitch">{p.pitch}</p>
-                  <ul className="spec">
-                    {p.includes.map((x) => (
-                      <li key={x}>{x}</li>
-                    ))}
-                  </ul>
+                  <details className="spec-toggle">
+                    <summary>
+                      What’s included <span className="spec-count">{p.includes.length}</span>
+                    </summary>
+                    <ul className="spec">
+                      {p.includes.map((x) => (
+                        <li key={x}>{x}</li>
+                      ))}
+                    </ul>
+                  </details>
                   <div className="product-foot">
                     <div className="price-row">
                       <span>Price</span>
@@ -110,6 +118,9 @@ export default function Home() {
                 </div>
               ))}
             </div>
+            <p className="swipe-hint" aria-hidden="true">
+              Swipe to see all 3 packages <span className="arrow">→</span>
+            </p>
           </div>
         </section>
 
@@ -136,7 +147,7 @@ export default function Home() {
         </section>
 
         {/* Configurator */}
-        <section className="section" id="build">
+        <section className="section tone-sand" id="build">
           <div className="sec-num" aria-hidden="true" data-parallax="0.1">02</div>
           <div className="wrap">
             <div className="section-head" data-reveal>
@@ -151,7 +162,7 @@ export default function Home() {
         </section>
 
         {/* Creative */}
-        <section className="section creative">
+        <section className="section tone-paper creative">
           <div className="sec-num" aria-hidden="true" data-parallax="0.1">03</div>
           <div className="creative-ghost" aria-hidden="true" data-parallax="-0.08">
             Shoot
@@ -196,7 +207,7 @@ export default function Home() {
         <Ticker items={niches} />
 
         {/* How it works */}
-        <section className="section" id="how">
+        <section className="section tone-ink" id="how">
           <div className="sec-num" aria-hidden="true" data-parallax="0.1">04</div>
           <div className="wrap">
             <div className="section-head" data-reveal>
@@ -243,7 +254,7 @@ export default function Home() {
         </section>
 
         {/* FAQ */}
-        <section className="section" id="faq">
+        <section className="section tone-paper" id="faq">
           <div className="wrap faq-grid">
             <div className="section-head" data-reveal>
               <div className="kicker kicker-brand">FAQ</div>
