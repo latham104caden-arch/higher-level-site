@@ -211,7 +211,7 @@ function buildScene() {
       emissiveIntensity: 0.12,
     }),
     cedar: new THREE.MeshStandardMaterial({ map: T.cedar, bumpMap: T.cedar, bumpScale: 1, roughness: 0.7 }),
-    door: new THREE.MeshPhysicalMaterial({ color: '#7a1418', roughness: 0.35, clearcoat: 0.8 }),
+    door: new THREE.MeshPhysicalMaterial({ color: '#2f5f93', roughness: 0.35, clearcoat: 0.8 }),
     brass: new THREE.MeshStandardMaterial({ color: '#c9a25a', metalness: 0.9, roughness: 0.25 }),
     concrete: new THREE.MeshStandardMaterial({ map: T.concrete, bumpMap: T.concrete, bumpScale: 0.6, roughness: 0.9 }),
     foundation: new THREE.MeshStandardMaterial({ color: '#a9a49c', roughness: 0.9 }),
@@ -478,8 +478,8 @@ function blobTexture() {
   c.width = c.height = 128
   const g = c.getContext('2d')!
   const grd = g.createRadialGradient(64, 64, 0, 64, 64, 64)
-  grd.addColorStop(0, 'rgba(40,25,20,0.4)')
-  grd.addColorStop(1, 'rgba(40,25,20,0)')
+  grd.addColorStop(0, 'rgba(25,40,60,0.4)')
+  grd.addColorStop(1, 'rgba(25,40,60,0)')
   g.fillStyle = grd
   g.fillRect(0, 0, 128, 128)
   return new THREE.CanvasTexture(c)

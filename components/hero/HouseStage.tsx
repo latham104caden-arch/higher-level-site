@@ -41,12 +41,12 @@ export function HouseStage() {
     <div className={`house-stage${ready ? ' is-ready' : ''}`}>
       <div className="house-glow" aria-hidden="true" />
       <svg className="house-fallback" viewBox="0 0 200 150" aria-hidden="true">
-        <ellipse cx="100" cy="138" rx="70" ry="7" fill="rgba(40,20,20,0.18)" />
+        <ellipse cx="100" cy="138" rx="70" ry="7" fill="rgba(25, 45, 70,0.18)" />
         <rect x="45" y="62" width="70" height="52" fill="#f3f0ea" />
         <polygon points="36,64 80,30 124,64" fill="#2a2c2f" />
         <rect x="112" y="80" width="44" height="34" fill="#f3f0ea" />
         <polygon points="108,82 134,62 160,82" fill="#2a2c2f" />
-        <rect x="72" y="86" width="14" height="28" fill="#7a1418" />
+        <rect x="72" y="86" width="14" height="28" fill="#2f5f93" />
         <rect x="52" y="74" width="14" height="14" fill="#1e252c" />
         <rect x="94" y="74" width="14" height="14" fill="#1e252c" />
         <rect x="118" y="92" width="32" height="22" fill="#9a6a43" />
